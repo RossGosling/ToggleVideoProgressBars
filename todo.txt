@@ -1,0 +1,12 @@
+
+- Per document override?
+
+- Icon for context menu
+
+- Configurable hotkey (Look at extension shortcuts)
+
+- Finalise Name
+
+- Finalise Icon
+
+- Context menu text not being set right
