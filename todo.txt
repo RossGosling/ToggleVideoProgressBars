@@ -10,3 +10,7 @@
 - Finalise Icon
 
 - Context menu text not being set right
+
+- Fix hotkey
+
+- Fix context menu
