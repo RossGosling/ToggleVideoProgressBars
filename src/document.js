@@ -66,8 +66,6 @@
 
             //////////////////////////////////////////////////////
 
-			//await sleep(25);
-
             if (await setting.isHidden()) {
 
 				addCSS();
@@ -80,34 +78,6 @@
             console.log(`Instantiated ${siteName} document!`);
 
             //////////////////////////////////////////////////////
-
-            // Register Listener for KeyPress
-
-            document.addEventListener(
-                'keypress',
-                (keyPressEvent) => {
-                    try {
-
-                        if (
-                            window.location.pathname.includes(config[siteName].pathPattern) &&
-                            (keyPressEvent === null || keyPressEvent.key === 's')
-                        ) {
-
-							console.log('browser.runtime', browser.runtime);
-
-                            return browser.runtime.sendMessage(
-                                {
-                                    type: MESSAGE_TOGGLE,
-                                }
-                            );
-                        }
-
-                    } catch (error) {
-                        console.error(error);
-                    }
-                },
-                false
-            );
 
             // Register Listener for Background Messages
 

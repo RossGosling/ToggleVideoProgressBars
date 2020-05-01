@@ -55,12 +55,6 @@ const setting = {
 
 //////////////////////////////////////////////////////
 
-const sleep = (milliseconds) => {
-    return new Promise(resolve => setTimeout(resolve, milliseconds));
-}
-
-//////////////////////////////////////////////////////
-
 // Logging override
 
 window.console = (() => {
