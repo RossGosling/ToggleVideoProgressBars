@@ -1,9 +1,16 @@
 {
   "manifest_version": 2,
   "name": "ToggleVideoProgressBars",
-  "version": "1.0.3",
+  "version": "1.0.4",
 
   "description": "Adds an 'S' hotkey for toggling visibility of the progress bar and displayed time for various video players! Supports YouTube, Netflix, Amazon, and Vimeo",
+
+  "icons": {
+    "16": "./icon/main.png",
+    "32": "./icon/main.png",
+    "64": "./icon/main.png",
+    "128": "./icon/main.png"
+  },
 
   "browser_action": {
     "default_icon": {
@@ -16,7 +23,7 @@
   "content_scripts": [
     {
       "matches": [ "*://*/*" ],
-      
+
       "include_globs": [
         "http*://*youtube.*",
         "http*://*youtu.be*",
@@ -45,11 +52,11 @@
     "./style/Amazon.css",
     "./style/Vimeo.css"
   ],
-  
+
   "permissions": [
     "storage",
     "contextMenus",
     "<all_urls>",
-	"tabs"
+	  "tabs"
   ]
 }

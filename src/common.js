@@ -28,6 +28,9 @@ const config = {
 
 const CONTEXTMENU_ID = 'context.menu';
 
+const CONTEXTMENU_TITLE_PREFIX = 'Toggle Progress Bars to ';
+const CONTEXTMENU_TITLE_SUFFIX = '';
+
 const ELEMENT_NAME = 'InjectedStylesheetElement';
 
 const MESSAGE_TOGGLE = 'toggle';
@@ -41,12 +44,12 @@ const setting = {
     isHidden: async() => {
 
         const setting = await browser.storage.local.get('isHidden');
-    
+
         return ('isHidden' in setting) ?
             setting.isHidden :
             false;
     },
-    
+
     setHidden: async(isHidden) => browser.storage.local.set({ isHidden }),
 }
 
@@ -61,7 +64,7 @@ const sleep = (milliseconds) => {
 // Logging override
 
 window.console = (() => {
-    
+
     const prefix = ['ToggleVideoProgressBars:'];
 
     const originalConsole = window.console;

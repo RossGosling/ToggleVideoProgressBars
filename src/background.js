@@ -1,26 +1,23 @@
 (async() => {
     try {
-        
+
         //////////////////////////////////////////////////////
 
         // Define Methods
 
         const setIcon = (isHidden) => {
-        
+
             browser.browserAction.setIcon({
                 path: (isHidden) ? "./icon/hidden.png" : "./icon/visible.png",
             });
         }
 
 		const setContextMenuText = (isHidden) => {
-			
-			const contextMenuTitlePrefix = 'Toggle Progress Bars to ';
-			const contextMenuTitleSuffix = '';
 
 			browser.contextMenus.update(
 				CONTEXTMENU_ID,
 				{
-					title:  `${contextMenuTitlePrefix}${(isHidden) ? 'visible' : 'hidden'}${contextMenuTitleSuffix}`,
+					title:  `${CONTEXTMENU_TITLE_PREFIX}${(isHidden) ? 'visible' : 'hidden'}${CONTEXTMENU_TITLE_SUFFIX}`,
 				}
 			);
 		}
@@ -38,7 +35,7 @@
                 setContextMenuText(isHidden);
 
 				if (isHidden) {
-					
+
 					await browser.tabs.query(
 						{},
 						(tabs) => tabs.map(
@@ -50,16 +47,16 @@
 											type: MESSAGE_ADD_CSS,
 										}
 									);
-									
+
 								} catch (error) {
 									console.error(error);
 								}
 							}
 						)
 					);
-					
+
 				} else {
-					
+
 					await browser.tabs.query(
 						{},
 						(tabs) => tabs.map(
@@ -71,7 +68,7 @@
 											type: MESSAGE_REMOVE_CSS,
 										}
 									);
-									
+
 								} catch (error) {
 									console.error(error);
 								}
@@ -116,9 +113,9 @@
         browser.contextMenus.create(
             {
                 id: CONTEXTMENU_ID,
-                title: `${contextMenuTitlePrefix}${(!isHidden) ? 'hidden' : 'visible'}${contextMenuTitleSuffix}`,
-               
-                onclick: toggleHidden(),
+                title: `${CONTEXTMENU_TITLE_PREFIX}${(!isHidden) ? 'hidden' : 'visible'}${CONTEXTMENU_TITLE_SUFFIX}`,
+
+                onclick: toggleHidden,
             }
         );
 
@@ -132,7 +129,7 @@
 
                     switch(message.type) {
 
-                        case MESSAGE_TOGGLE: 
+                        case MESSAGE_TOGGLE:
                             return toggleHidden();
 
 						default:
