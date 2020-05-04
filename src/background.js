@@ -12,15 +12,15 @@
             });
         }
 
-		const setContextMenuText = (isHidden) => {
+        const setContextMenuText = (isHidden) => {
 
-			browser.contextMenus.update(
-				CONTEXTMENU_ID,
-				{
-					title:  `${CONTEXTMENU_TITLE_PREFIX}${(isHidden) ? 'visible' : 'hidden'}${CONTEXTMENU_TITLE_SUFFIX}`,
-				}
-			);
-		}
+            browser.contextMenus.update(
+                CONTEXTMENU_ID,
+                {
+                    title:  `${CONTEXTMENU_TITLE_PREFIX}${(isHidden) ? 'visible' : 'hidden'}${CONTEXTMENU_TITLE_SUFFIX}`,
+                }
+            );
+        }
 
         const toggleHidden = async() => {
             try {
@@ -34,48 +34,48 @@
                 setIcon(isHidden);
                 setContextMenuText(isHidden);
 
-				if (isHidden) {
+                if (isHidden) {
 
-					await browser.tabs.query(
-						{},
-						(tabs) => tabs.map(
-							(tab) => {
-								try {
-									return browser.tabs.sendMessage(
-										tab.id,
-										{
-											type: MESSAGE_ADD_CSS,
-										}
-									);
+                    await browser.tabs.query(
+                        {},
+                        (tabs) => tabs.map(
+                            (tab) => {
+                                try {
+                                    return browser.tabs.sendMessage(
+                                        tab.id,
+                                        {
+                                            type: MESSAGE_ADD_CSS,
+                                        }
+                                    );
 
-								} catch (error) {
-									console.error(error);
-								}
-							}
-						)
-					);
+                                } catch (error) {
+                                    console.error(error);
+                                }
+                            }
+                        )
+                    );
 
-				} else {
+                } else {
 
-					await browser.tabs.query(
-						{},
-						(tabs) => tabs.map(
-							(tab) => {
-								try {
-									return browser.tabs.sendMessage(
-										tab.id,
-										{
-											type: MESSAGE_REMOVE_CSS,
-										}
-									);
+                    await browser.tabs.query(
+                        {},
+                        (tabs) => tabs.map(
+                            (tab) => {
+                                try {
+                                    return browser.tabs.sendMessage(
+                                        tab.id,
+                                        {
+                                            type: MESSAGE_REMOVE_CSS,
+                                        }
+                                    );
 
-								} catch (error) {
-									console.error(error);
-								}
-							}
-						)
-					);
-				}
+                                } catch (error) {
+                                    console.error(error);
+                                }
+                            }
+                        )
+                    );
+                }
 
                 return isHidden;
 
@@ -125,15 +125,15 @@
             (message, sender) => {
                 try {
 
-					// console.log('message', message);
+                    // console.log('message', message);
 
                     switch(message.type) {
 
                         case MESSAGE_TOGGLE:
                             return toggleHidden();
 
-						default:
-							console.error('Error message.type', message.type);
+                        default:
+                            console.error('Error message.type', message.type);
                     }
 
                 } catch (error) {

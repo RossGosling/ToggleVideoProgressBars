@@ -3,46 +3,46 @@
 
         //////////////////////////////////////////////////////
 
-		// Methods
+        // Methods
 
-		const addCSS = () => {
-			try {
+        const addCSS = () => {
+            try {
 
-				const element = document.createElement("link");
+                const element = document.createElement("link");
 
-				element.setAttribute("id", ELEMENT_NAME);
-				element.setAttribute("type", "text/css");
-				element.setAttribute("rel", "stylesheet");
-				element.setAttribute("href", browser.extension.getURL(`style/${siteName}.css`));
+                element.setAttribute("id", ELEMENT_NAME);
+                element.setAttribute("type", "text/css");
+                element.setAttribute("rel", "stylesheet");
+                element.setAttribute("href", browser.extension.getURL(`style/${siteName}.css`));
 
-				document.body.appendChild(element);
+                document.body.appendChild(element);
 
-			} catch (error) {
+            } catch (error) {
 
-				console.log(error);
-			}
-		}
+                console.log(error);
+            }
+        }
 
-		const removeCSS = () => {
-			try {
+        const removeCSS = () => {
+            try {
 
-				const element = document.getElementById(ELEMENT_NAME);
+                const element = document.getElementById(ELEMENT_NAME);
 
-				if (element) {
+                if (element) {
 
-					element.parentNode.removeChild(element);
-				}
+                    element.parentNode.removeChild(element);
+                }
 
-				// Error handling if there were more elements for some reason
-				if (document.getElementById(ELEMENT_NAME)) {
+                // Error handling if there were more elements for some reason
+                if (document.getElementById(ELEMENT_NAME)) {
 
-					return removeCSS();
-				}
+                    return removeCSS();
+                }
 
-			} catch (error) {
-				console.error(error);
-			}
-		}
+            } catch (error) {
+                console.error(error);
+            }
+        }
 
         //////////////////////////////////////////////////////
 
@@ -68,12 +68,12 @@
 
             if (await setting.isHidden()) {
 
-				addCSS();
+                addCSS();
 
-			} else {
+            } else {
 
-				removeCSS();
-			}
+                removeCSS();
+            }
 
             console.log(`Instantiated ${siteName} document!`);
 
@@ -85,19 +85,19 @@
                 (message) => {
                     try {
 
-						//console.log('message', message);
+                        //console.log('message', message);
 
-						switch(message.type) {
+                        switch(message.type) {
 
-							case MESSAGE_ADD_CSS:
-								return addCSS();
+                            case MESSAGE_ADD_CSS:
+                                return addCSS();
 
-							case MESSAGE_REMOVE_CSS:
-								return removeCSS();
+                            case MESSAGE_REMOVE_CSS:
+                                return removeCSS();
 
-							default:
-								console.error('Error message.type', message.type);
-						}
+                            default:
+                                console.error('Error message.type', message.type);
+                        }
 
                     } catch (error) {
                         console.error(error);
