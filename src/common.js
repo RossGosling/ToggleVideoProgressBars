@@ -39,14 +39,24 @@ const MESSAGE_REMOVE_CSS = 'remove css';
 
 //////////////////////////////////////////////////////
 
+const _getHiddenSetting = () => {
+    return new Promise((resolve, reject) => {
+        try {
+            browser.storage.local.get('isHidden', (result) => resolve(result))
+        } catch(error) {
+            reject(error);
+        }
+    })
+}
+
 const setting = {
 
     isHidden: async() => {
 
-        const setting = await browser.storage.local.get('isHidden');
+        const settingObject = await _getHiddenSetting();
 
-        return ('isHidden' in setting) ?
-            setting.isHidden :
+        return (settingObject && 'isHidden' in settingObject) ?
+            settingObject.isHidden :
             false;
     },
 
