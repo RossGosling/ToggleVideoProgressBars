@@ -47,10 +47,7 @@
   },
 
   "web_accessible_resources": [
-    "./style/YouTube.css",
-    "./style/Netflix.css",
-    "./style/Amazon.css",
-    "./style/Vimeo.css"
+    "./style/*.css"
   ],
 
   "permissions": [

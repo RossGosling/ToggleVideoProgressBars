@@ -13,13 +13,12 @@
                 element.setAttribute("id", ELEMENT_NAME);
                 element.setAttribute("type", "text/css");
                 element.setAttribute("rel", "stylesheet");
-                element.setAttribute("href", browser.extension.getURL(`style/${siteName}.css`));
+                element.setAttribute("href", browser.runtime.getURL(`/style/${siteName}.css`));
 
                 document.body.appendChild(element);
 
             } catch (error) {
-
-                console.log(error);
+                console.error(error);
             }
         }
 
