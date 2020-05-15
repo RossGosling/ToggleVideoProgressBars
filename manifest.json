@@ -6,15 +6,15 @@
   "description": "Adds the ability to toggle visibility of progress bars etc for various video players! Supports YouTube, Netflix, Amazon, and Vimeo",
 
   "icons": {
-    "16": "./icon/main.png",
-    "32": "./icon/main.png",
-    "64": "./icon/main.png",
-    "128": "./icon/main.png"
+    "16": "icon/main.png",
+    "32": "icon/main.png",
+    "64": "icon/main.png",
+    "128": "icon/main.png"
   },
 
   "browser_action": {
     "default_icon": {
-      "128": "./icon/visible.png"
+      "128": "icon/visible.png"
     },
     "browser_style": true,
     "default_title": "ToggleVideoProgressBars Toggle"
@@ -33,21 +33,21 @@
       ],
 
       "js": [
-        "./src/common.js",
-        "./src/document.js"
+        "src/common.js",
+        "src/document.js"
       ]
     }
   ],
 
   "background": {
     "scripts": [
-      "./src/common.js",
-      "./src/background.js"
+      "src/common.js",
+      "src/background.js"
     ]
   },
 
   "web_accessible_resources": [
-    "./style/*.css"
+    "style/*.css"
   ],
 
   "permissions": [
