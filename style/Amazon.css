@@ -1,8 +1,4 @@
 
-.time {
-    display: none;
-}
-
-.seekBar  {
-    display: none;
-}
+.atvwebplayersdk-timeindicator-text { display: none; }
+.atvwebplayersdk-seekbar-container { display: none; }
+.atvwebplayersdk-seekbar-range { display: none; }
