@@ -3,3 +3,6 @@
 
 .ltr-13q34j2 { display: none; }
 .ltr-pw0kjc { display: none; }
+
+div[data-uia="timeline"] { display: none; }
+span[data-uia="controls-time-remaining"] { display: none; }
