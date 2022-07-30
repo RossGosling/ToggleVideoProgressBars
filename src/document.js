@@ -10,7 +10,7 @@
 
                 const element = document.createElement("link");
 
-                element.setAttribute("id", ELEMENT_NAME);
+                element.setAttribute("id", UNIQUE_ID);
                 element.setAttribute("type", "text/css");
                 element.setAttribute("rel", "stylesheet");
                 element.setAttribute("href", browser.runtime.getURL(`/style/${siteName}.css`));
@@ -25,7 +25,7 @@
         const removeCSS = () => {
             try {
 
-                const element = document.getElementById(ELEMENT_NAME);
+                const element = document.getElementById(UNIQUE_ID);
 
                 if (element) {
 
@@ -33,7 +33,7 @@
                 }
 
                 // Error handling if there were more elements for some reason
-                if (document.getElementById(ELEMENT_NAME)) {
+                if (document.getElementById(UNIQUE_ID)) {
 
                     return removeCSS();
                 }
@@ -88,11 +88,11 @@
 
                         switch(message.type) {
 
-                            case MESSAGE_ADD_CSS:
-                                return addCSS();
+                            case MESSAGE_SET_HIDDEN:
+                                return Promise.resolve(addCSS());
 
-                            case MESSAGE_REMOVE_CSS:
-                                return removeCSS();
+                            case MESSAGE_SET_VISIBLE:
+                                return Promise.resolve(removeCSS());
 
                             default:
                                 console.error('Error message.type', message.type);

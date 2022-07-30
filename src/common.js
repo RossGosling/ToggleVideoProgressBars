@@ -31,11 +31,11 @@ const CONTEXTMENU_ID = 'context.menu';
 const CONTEXTMENU_TITLE_PREFIX = 'Toggle Progress Bars to ';
 const CONTEXTMENU_TITLE_SUFFIX = '';
 
-const ELEMENT_NAME = 'InjectedStylesheetElement';
+const UNIQUE_ID = 'ToggleVideoProgressBars_Injection';
 
-const MESSAGE_TOGGLE = 'toggle';
-const MESSAGE_ADD_CSS = 'add css';
-const MESSAGE_REMOVE_CSS = 'remove css';
+const MESSAGE_TOGGLE = `${UNIQUE_ID} toggle`;
+const MESSAGE_SET_HIDDEN = `${UNIQUE_ID} set hidden`;
+const MESSAGE_SET_VISIBLE = `${UNIQUE_ID} set visible`;
 
 //////////////////////////////////////////////////////
 

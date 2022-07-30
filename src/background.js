@@ -44,7 +44,7 @@
                                     return browser.tabs.sendMessage(
                                         tab.id,
                                         {
-                                            type: MESSAGE_ADD_CSS,
+                                            type: MESSAGE_SET_HIDDEN,
                                         }
                                     );
 
@@ -65,7 +65,7 @@
                                     return browser.tabs.sendMessage(
                                         tab.id,
                                         {
-                                            type: MESSAGE_REMOVE_CSS,
+                                            type: MESSAGE_SET_VISIBLE,
                                         }
                                     );
 
@@ -122,7 +122,7 @@
         // Register Listener for Document Messages
 
         browser.runtime.onMessage.addListener(
-            (message, sender) => {
+            (message) => {
                 try {
 
                     // console.log('message', message);
@@ -130,7 +130,7 @@
                     switch(message.type) {
 
                         case MESSAGE_TOGGLE:
-                            return toggleHidden();
+                            return Promise.resolve(toggleHidden());
 
                         default:
                             console.error('Error message.type', message.type);

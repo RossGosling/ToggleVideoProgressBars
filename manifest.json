@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "ToggleVideoProgressBars",
-  "version": "1.0.5",
+  "version": "1.0.6",
 
   "description": "Adds the ability to toggle visibility of progress bars etc for various video players! Supports YouTube, Netflix, Amazon, and Vimeo",
 
